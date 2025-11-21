@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({
+    super.key,
+  });
+  // Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +33,7 @@ class NoteItem extends StatelessWidget {
             subtitle: Text(
               'Build your creater with Tharwat samy',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color: Colors.black.withOpacity(.5),
               ),
             ),
@@ -53,9 +55,9 @@ class NoteItem extends StatelessWidget {
                   color: Colors.black.withOpacity(0.5),
                 )),
           ),
-    
+
           // حل اخر لو حبيت تستخدم ال Row بدل ListTile
-    
+
           // const Row(
           //   children: [
           //     Text(
