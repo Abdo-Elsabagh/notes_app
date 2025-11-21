@@ -53,9 +53,9 @@ class NoteItem extends StatelessWidget {
                   color: Colors.black.withOpacity(0.5),
                 )),
           ),
-
+    
           // حل اخر لو حبيت تستخدم ال Row بدل ListTile
-
+    
           // const Row(
           //   children: [
           //     Text(
