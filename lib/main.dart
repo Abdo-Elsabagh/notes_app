@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/constanst.dart';
 import 'package:notes_app/views/notes_view.dart';
 
 void main() {
@@ -16,20 +17,21 @@ class NotesApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Poppins',
         inputDecorationTheme: InputDecorationTheme(
-          labelStyle: const TextStyle(color: Colors.white),
-          suffixIconColor: Colors.white,
-          prefixIconColor: Colors.white,
+          labelStyle: const TextStyle(color: kPrimaryColors),
+          suffixIconColor: kPrimaryColors,
+          prefixIconColor: kPrimaryColors,
+          hintStyle: const TextStyle(color: kPrimaryColors),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(color: Colors.green)),
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(color: kPrimaryColors)),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Colors.white)),
           focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Colors.red)),
           errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Colors.red)),
         ),
       ),

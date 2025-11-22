@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/constanst.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton({super.key, required this.onTop, this.textButton});
@@ -9,9 +10,9 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTop,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: kPrimaryColors,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(16),
         ),
         minimumSize: const Size(double.infinity, 50),
       ),

@@ -9,6 +9,7 @@ class CstomTextFiled extends StatelessWidget {
       this.suffixIcon,
       this.keyboardType,
       this.isVisible = false,
+      this.maxLines = 1,
       this.onChange});
   String? labeText;
   String? hinttext;
@@ -16,28 +17,32 @@ class CstomTextFiled extends StatelessWidget {
   IconButton? suffixIcon;
   TextInputType? keyboardType;
   bool isVisible;
+  int maxLines;
 
   Function(String)? onChange;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        validator: (value) {
-          if (value!.isEmpty) {
-            return 'field is required';
-          }
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'field is required';
+        }
 
-          return null;
-        },
-        onChanged: onChange,
-        keyboardType: keyboardType,
-        obscureText: isVisible,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
-        decoration: InputDecoration(
-            prefixIcon: prefixIco,
-            labelText: labeText,
-            hintText: hinttext,
-            suffixIcon: suffixIcon));
+        return null;
+      },
+      maxLines: maxLines,
+      onChanged: onChange,
+      keyboardType: keyboardType,
+      obscureText: isVisible,
+      style: const TextStyle(
+        color: Colors.white,
+      ),
+      decoration: InputDecoration(
+        prefixIcon: prefixIco,
+        labelText: labeText,
+        hintText: hinttext,
+        suffixIcon: suffixIcon,
+      ),
+    );
   }
 }
