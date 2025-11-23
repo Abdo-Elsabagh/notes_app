@@ -14,11 +14,12 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        minimumSize: const Size(double.infinity, 50),
+        minimumSize: Size(MediaQuery.of(context).size.width, 50),
       ),
       child: Text(
         textButton!,
-        style: const TextStyle(fontSize: 20, color: Colors.black),
+        style: const TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }
