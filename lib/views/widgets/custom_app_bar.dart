@@ -28,6 +28,7 @@ class CutomeAppBar extends StatelessWidget {
               child: IconButton(
                 onPressed: ontap,
                 icon: Icon(
+                  color: Colors.white,
                   icon,
                   size: 28,
                 ),

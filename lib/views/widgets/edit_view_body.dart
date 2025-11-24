@@ -42,8 +42,8 @@ class EditNoteViewbady extends StatelessWidget {
             const SizedBox(height: 16),
             CustomTextFiled(
               maxLines: 5,
-              hinttext: 'Enter your note description',
-              labeText: 'Description',
+              hinttext: 'Enter your note Content',
+              labeText: 'Content',
               prefixIco: const Icon(Icons.description),
               keyboardType: TextInputType.text,
             ),
