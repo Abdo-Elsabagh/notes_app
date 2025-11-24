@@ -7,18 +7,22 @@ class NotesViewBady extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: [
-              Center(
-                child: CutomeAppBar(),
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+            ),
+            Center(
+              child: CutomeAppBar(
+                title: 'Notes',
+                icon: Icons.search_rounded,
               ),
-              Expanded(child: NotesListView())
-            ],
-          ),
+            ),
+            Expanded(child: NotesListView())
+          ],
         ),
       ),
     );

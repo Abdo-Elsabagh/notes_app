@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/widgets/box_show_body.dart';
 import 'package:notes_app/views/widgets/notes/custom_button.dart';
 import 'package:notes_app/views/widgets/notes/custom_text_filed.dart';
 
@@ -31,7 +32,16 @@ class AddNoteBottomSheet extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             CustomButton(
-              onTop: () {},
+              onTop: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => const BoxShowBody(
+                          massage: 'The item has been added successfully',
+                          text: 'Added Successful 😊',
+                          icon: Icon(Icons.check_circle,
+                              color: Colors.green, size: 60),
+                        ));
+              },
               textButton: 'Add Note',
             ),
             const SizedBox(height: 32),

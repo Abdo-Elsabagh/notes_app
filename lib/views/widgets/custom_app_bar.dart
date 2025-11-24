@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
 class CutomeAppBar extends StatelessWidget {
-  const CutomeAppBar({super.key});
-
+  const CutomeAppBar(
+      {super.key, required this.title, required this.icon, this.ontap});
+  final String title;
+  final IconData icon;
+  final VoidCallback? ontap;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          'Notes',
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
         const Spacer(),
         Container(
@@ -23,9 +26,9 @@ class CutomeAppBar extends StatelessWidget {
             ),
             child: Center(
               child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.search_rounded,
+                onPressed: ontap,
+                icon: Icon(
+                  icon,
                   size: 28,
                 ),
               ),
