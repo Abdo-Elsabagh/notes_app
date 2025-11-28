@@ -48,7 +48,6 @@ class EditNoteViewbady extends StatelessWidget {
               keyboardType: TextInputType.text,
             ),
             const SizedBox(height: 32),
-            Image.asset('assets/image/logo.png'),
           ],
         ),
       ),
