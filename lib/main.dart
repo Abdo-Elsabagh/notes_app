@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constanst.dart';
-import 'package:notes_app/views/notes_view.dart';
+import 'package:notes_app/splash_view.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -38,7 +38,7 @@ class NotesApp extends StatelessWidget {
               borderSide: const BorderSide(color: Colors.red)),
         ),
       ),
-      home: const NotesView(),
+      home: const SplachView(),
     );
   }
 }
