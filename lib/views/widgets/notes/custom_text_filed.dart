@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFiled extends StatelessWidget {
-  CustomTextFiled(
+  const CustomTextFiled(
       {super.key,
       this.hinttext,
       this.labeText,
@@ -10,28 +10,28 @@ class CustomTextFiled extends StatelessWidget {
       this.keyboardType,
       this.isVisible = false,
       this.maxLines = 1,
-      this.onChange});
-  String? labeText;
-  String? hinttext;
-  Icon? prefixIco;
-  IconButton? suffixIcon;
-  TextInputType? keyboardType;
-  bool isVisible;
-  int maxLines;
+      this.onSaved});
+  final String? labeText;
+  final String? hinttext;
+  final Icon? prefixIco;
+  final IconButton? suffixIcon;
+  final TextInputType? keyboardType;
+  final bool isVisible;
+  final int maxLines;
 
-  Function(String)? onChange;
+  final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value?.isEmpty ?? true) {
           return 'field is required';
         }
 
         return null;
       },
       maxLines: maxLines,
-      onChanged: onChange,
+      onSaved: onSaved,
       keyboardType: keyboardType,
       obscureText: isVisible,
       style: const TextStyle(

@@ -8,45 +8,80 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 32,
-            ),
-            CustomTextFiled(
-              hinttext: 'Enter your note title',
-              labeText: 'Title',
-              prefixIco: const Icon(Icons.title),
-              keyboardType: TextInputType.text,
-            ),
-            const SizedBox(height: 16),
-            CustomTextFiled(
-              maxLines: 5,
-              hinttext: 'Enter your note description',
-              labeText: 'Description',
-              prefixIco: const Icon(Icons.description),
-              keyboardType: TextInputType.text,
-            ),
-            const SizedBox(height: 32),
-            CustomButton(
-              onTop: () {
-                showDialog(
-                    context: context,
-                    builder: (context) => const BoxShowBody(
-                          massage: 'The item has been added successfully',
-                          text: 'Added Successful 😊',
-                          icon: Icon(Icons.check_circle,
-                              color: Colors.green, size: 60),
-                        ));
-              },
-              textButton: 'Add Note',
-            ),
-            const SizedBox(height: 32),
-          ],
-        ),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  String? title, subtitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 32,
+          ),
+          CustomTextFiled(
+            onSaved: (value) => title = value,
+            hinttext: 'Enter your note title',
+            labeText: 'Title',
+            prefixIco: const Icon(Icons.title),
+            keyboardType: TextInputType.text,
+          ),
+          const SizedBox(height: 16),
+          CustomTextFiled(
+            onSaved: (value) {
+              subtitle = value;
+            },
+            maxLines: 5,
+            hinttext: 'Enter your note description',
+            labeText: 'Description',
+            prefixIco: const Icon(Icons.description),
+            keyboardType: TextInputType.text,
+          ),
+          const SizedBox(height: 32),
+          CustomButton(
+            onTop: () async {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+
+                setState(() {
+                  showDialog(
+                      context: context,
+                      builder: (context) => const BoxShowBody(
+                            massage: 'The item has been added successfully',
+                            text: 'Added Successful 😊',
+                            icon: Icon(Icons.check_circle,
+                                color: Colors.green, size: 60),
+                          ));
+                });
+              } else {
+                setState(() {});
+                autovalidateMode = AutovalidateMode.always;
+              }
+            },
+            textButton: 'Add Note',
+          ),
+          const SizedBox(height: 32),
+        ],
       ),
     );
   }

@@ -40,7 +40,7 @@ class BoxShowBody extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () {
+          onPressed: () async {
             Navigator.push(
                 context,
                 MaterialPageRoute(
