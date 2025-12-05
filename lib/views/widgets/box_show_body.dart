@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/notes_view.dart';
 
 class BoxShowBody extends StatelessWidget {
   const BoxShowBody(
       {super.key,
       required this.massage,
       required this.text,
+      required this.onPressed,
       required this.icon});
   final String massage;
   final String text;
   final Icon icon;
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -40,13 +41,7 @@ class BoxShowBody extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () async {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const NotesView(),
-                ));
-          },
+          onPressed: onPressed,
           child: const Text("OK", style: TextStyle(color: Colors.blue)),
         ),
       ],

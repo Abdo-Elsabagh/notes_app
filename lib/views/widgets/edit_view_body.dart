@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/notes_view.dart';
 import 'package:notes_app/views/widgets/box_show_body.dart';
 import 'package:notes_app/views/widgets/custom_app_bar.dart';
 import 'package:notes_app/views/widgets/notes/custom_text_filed.dart';
@@ -22,7 +23,14 @@ class EditNoteViewbady extends StatelessWidget {
               ontap: () {
                 showDialog(
                     context: context,
-                    builder: (context) => const BoxShowBody(
+                    builder: (context) => BoxShowBody(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const NotesView()),
+                            );
+                          },
                           massage: 'Your changes were applied successfully',
                           text: 'Update Successful 😊',
                           icon: Icon(Icons.check_circle,
