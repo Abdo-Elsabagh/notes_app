@@ -38,7 +38,7 @@ class AddNoteBottomSheet extends StatelessWidget {
                     },
                     massage:
                         'The item has been added successfully to your notes. ',
-                    text: 'Added Successful 😊',
+                    text: 'Added Successful ✔️',
                     icon:
                         Icon(Icons.check_circle, color: Colors.green, size: 60),
                   ));
@@ -47,8 +47,11 @@ class AddNoteBottomSheet extends StatelessWidget {
         return AbsorbPointer(
           absorbing: state is AddNoteLoading ? true : false,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+                left: 16.0,
+                right: 16.0,
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: const SingleChildScrollView(
               child: AddNoteForm(),
             ),
           ),
