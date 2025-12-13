@@ -32,7 +32,7 @@ class EditNoteViewbady extends StatelessWidget {
                             );
                           },
                           massage: 'Your changes were applied successfully',
-                          text: 'Update Successful 😊',
+                          text: 'Update Successful ✔️',
                           icon: Icon(Icons.check_circle,
                               color: Colors.green, size: 60),
                         ));

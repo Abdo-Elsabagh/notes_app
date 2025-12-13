@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/edit_note_view.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({
-    super.key,
-  });
-  // Color? color;
+  const NoteItem({super.key, required this.note});
+
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,7 +21,7 @@ class NoteItem extends StatelessWidget {
         padding: const EdgeInsets.only(top: 24.0, bottom: 24.0, left: 16),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color(0xffFFCC80),
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Column(
@@ -29,10 +29,10 @@ class NoteItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ListTile(
-              title: const Padding(
+              title: Padding(
                 padding: EdgeInsets.only(bottom: 16.0),
                 child: Text(
-                  'Flutter tips',
+                  note.title,
                   style: TextStyle(
                     fontSize: 26.0,
                     color: Colors.black,
@@ -40,7 +40,7 @@ class NoteItem extends StatelessWidget {
                 ),
               ),
               subtitle: Text(
-                'Build your creater with Tharwat samy',
+                note.subtitle,
                 style: TextStyle(
                   fontSize: 18.0,
                   color: Colors.black.withOpacity(.5),
@@ -59,7 +59,7 @@ class NoteItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24, top: 16),
-              child: Text('May 21,2022',
+              child: Text(note.date,
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.5),
                   )),
