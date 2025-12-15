@@ -14,19 +14,35 @@ class NotesListView extends StatelessWidget {
         List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: ListView.separated(
-            padding: EdgeInsets.zero,
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 10,
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 1250),
+            // transitionBuilder: (child, animation) {
+            //   return FadeTransition(opacity: animation, child: child);
+            // },
+            transitionBuilder: (child, animation) {
+              return SlideTransition(
+                position:
+                    Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
+                        .animate(animation),
+                child: FadeTransition(opacity: animation, child: child),
               );
             },
-            itemCount: notes.length,
-            itemBuilder: (context, index) {
-              return NoteItem(
-                note: notes[index],
-              );
-            },
+            child: ListView.separated(
+              key: ValueKey(notes.length),
+              padding: EdgeInsets.zero,
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 10,
+                );
+              },
+              itemCount: notes.length,
+              itemBuilder: (context, index) {
+                return NoteItem(
+                  key: ValueKey(notes[index].key),
+                  note: notes[index],
+                );
+              },
+            ),
           ),
         );
       },

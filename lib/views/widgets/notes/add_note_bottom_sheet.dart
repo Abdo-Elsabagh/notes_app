@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/views/notes_view.dart';
 import 'package:notes_app/views/widgets/box_show_body.dart';
 import 'package:notes_app/views/widgets/notes/add_note_form%20.dart';
@@ -35,6 +36,7 @@ class AddNoteBottomSheet extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => NotesView()));
+                       BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                     },
                     massage:
                         'The item has been added successfully to your notes. ',
