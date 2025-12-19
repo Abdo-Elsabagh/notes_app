@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/notes_view.dart';
 import 'package:notes_app/views/widgets/box_show_body.dart';
 import 'package:notes_app/views/widgets/custom_app_bar.dart';
 import 'package:notes_app/views/widgets/notes/custom_text_filed.dart';
 
-class EditNoteViewbady extends StatelessWidget {
-  const EditNoteViewbady({super.key});
+class EditNoteViewbady extends StatefulWidget {
+  const EditNoteViewbady({super.key, required this.note});
+  final NoteModel note;
+
+  @override
+  State<EditNoteViewbady> createState() => _EditNoteViewbadyState();
+}
+
+class _EditNoteViewbadyState extends State<EditNoteViewbady> {
+  String? title, cotent;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +31,7 @@ class EditNoteViewbady extends StatelessWidget {
             CutomeAppBar(
               title: 'Edit Note',
               icon: Icons.check,
-              ontap: () {
+              onPressed: () {
                 showDialog(
                     context: context,
                     builder: (context) => BoxShowBody(
@@ -30,6 +41,13 @@ class EditNoteViewbady extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const NotesView()),
                             );
+                            widget.note.title = title ?? widget.note.title;
+                            widget.note.subtitle =
+                                cotent ?? widget.note.subtitle;
+
+                            widget.note.save();
+                            BlocProvider.of<NotesCubit>(context)
+                                .fetchAllNotes();
                           },
                           massage: 'Your changes were applied successfully',
                           text: 'Update Successful ✔️',
@@ -42,16 +60,18 @@ class EditNoteViewbady extends StatelessWidget {
               height: 32,
             ),
             CustomTextFiled(
-              hinttext: 'Enter your note title',
-              labeText: 'Title',
+              onChanged: (value) => title = value,
+              hinttext: widget.note.title,
               prefixIco: const Icon(Icons.title),
               keyboardType: TextInputType.text,
             ),
             const SizedBox(height: 16),
             CustomTextFiled(
+              onChanged: (value) {
+                cotent = value;
+              },
               maxLines: 5,
-              hinttext: 'Enter your note Content',
-              labeText: 'Content',
+              hinttext: widget.note.subtitle,
               prefixIco: const Icon(Icons.description),
               keyboardType: TextInputType.text,
             ),

@@ -9,6 +9,7 @@ class CustomTextFiled extends StatelessWidget {
       this.suffixIcon,
       this.keyboardType,
       this.isVisible = false,
+      this.onChanged,
       this.maxLines = 1,
       this.onSaved});
   final String? labeText;
@@ -18,7 +19,7 @@ class CustomTextFiled extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool isVisible;
   final int maxLines;
-
+  final Function(String)? onChanged;
   final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class CustomTextFiled extends StatelessWidget {
       },
       maxLines: maxLines,
       onSaved: onSaved,
+      onChanged: onChanged,
       keyboardType: keyboardType,
       obscureText: isVisible,
       style: const TextStyle(

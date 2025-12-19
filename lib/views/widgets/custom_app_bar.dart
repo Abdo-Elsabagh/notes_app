@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CutomeAppBar extends StatelessWidget {
   const CutomeAppBar(
-      {super.key, required this.title, required this.icon, this.ontap});
+      {super.key, required this.title, required this.icon, this.onPressed});
   final String title;
   final IconData icon;
-  final VoidCallback? ontap;
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,7 +26,7 @@ class CutomeAppBar extends StatelessWidget {
             ),
             child: Center(
               child: IconButton(
-                onPressed: ontap,
+                onPressed: onPressed,
                 icon: Icon(
                   color: Colors.white,
                   icon,
