@@ -47,8 +47,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
             prefixIco: const Icon(Icons.description),
             keyboardType: TextInputType.text,
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           ColorsListView(),
+          const SizedBox(height: 16),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
