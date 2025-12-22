@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constanst.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/notes_view.dart';
 import 'package:notes_app/views/widgets/box_show_body.dart';
-import 'package:notes_app/views/widgets/custom_app_bar.dart';
+import 'package:notes_app/views/widgets/cutom_widget/custom_app_bar.dart';
+import 'package:notes_app/views/widgets/cutom_widget/custom_text_filed.dart';
+import 'package:notes_app/views/widgets/edit_note/edit_note_colors_list_view.dart';
 import 'package:notes_app/views/widgets/notes/color_list_view.dart';
-import 'package:notes_app/views/widgets/notes/custom_text_filed.dart';
 
 class EditNoteViewbady extends StatefulWidget {
   const EditNoteViewbady({super.key, required this.note});
@@ -76,11 +78,14 @@ class _EditNoteViewbadyState extends State<EditNoteViewbady> {
               prefixIco: const Icon(Icons.description),
               keyboardType: TextInputType.text,
             ),
-            const SizedBox(height: 32),
-            ColorsListView()
+            const SizedBox(height: 16),
+            EditNoteColorsList(
+              note: widget.note,
+            )
           ],
         ),
       ),
     );
   }
 }
+
